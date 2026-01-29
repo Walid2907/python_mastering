@@ -6,10 +6,11 @@ print("Initializing new storage unit: new_discovery.txt")
 print("Storage unit created successfully...\n")
 
 print("=== CYBER ARCHIVES - PRESERVATION SYSTEM ===\n")
-with open("../data-generator-tools/new_discovery.txt", "w") as file:
-    file.write(data)
+file = open("new_discovery.txt", "w")
+file.write(data)
 
 print("Inscribing preservation data...")
 print(data)
 print("Data inscription complete. Storage unit sealed.")
 print("Archive 'new_discovery.txt' ready for long-term preservation.")
+file.close()
