@@ -1,6 +1,5 @@
 import time
 
-
 # Event Generator (Deterministic)
 def game_event_stream(num_events):
     players = ['alice', 'bob', 'charlie', 'dave', 'eve']
