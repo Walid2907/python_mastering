@@ -33,8 +33,8 @@ def process_events(num_events):
         if action == 'leveled up':
             level_up_count += 1
 
-    end_time = time.time()  # end timing
-    elapsed = end_time - start_time
+    
+    
 
     print("\n=== Stream Analytics ===")
     print(f"Total events processed: {total_events}")
