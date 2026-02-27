@@ -44,5 +44,6 @@ class Deck:
                 stats["spells"] += 1
             elif isinstance(card, ArtifactCard):
                 stats["artifacts"] += 1
-        stats["avg_cost"] = round(total / len(self.deck), 1) if self.deck else 0
+        stats["avg_cost"] = round(total / len(self.deck), 1) \
+            if self.deck else 0
         return stats

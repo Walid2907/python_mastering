@@ -1,4 +1,5 @@
-from .SpellCard import SpellCard
-from ex0 import CreatureCard
+from ex1.SpellCard import SpellCard
+from ex1.ArtifactCard import ArtifactCard
+from ex1.Deck import Deck
 
-__all__ = [SpellCard, CreatureCard]
+__all__ = ["SpellCard", "ArtifactCard", "Deck"]

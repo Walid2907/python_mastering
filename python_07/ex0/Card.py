@@ -1,16 +1,15 @@
-from typing import Dict
+from typing import Dict, Any
 from abc import ABC, abstractmethod
 
 
-# Big parent class (Base)
 class Card(ABC):
     # global var for the valid rarity
     __rarity_var = ["common", "uncommon", "rare",
                     "epic", "legendary", "eternal"]
 
     def __init__(self, name: str, cost: int, rarity: str):
-        # check that the input is right and logical before constructing
-        if cost <= 0:
+        # check that the inpt is right and logical before constructing
+        if cost < 0:
             raise ValueError("Cost must be a positive integer")
         if rarity.lower() not in self.__rarity_var:
             raise ValueError(f"Rarity must be one of {self.__rarity_var}")
@@ -19,7 +18,7 @@ class Card(ABC):
         self.rarity = rarity.lower()
 
     @abstractmethod
-    def play(self, game_state: Dict) -> Dict:
+    def play(self, game_state: Dict[str, Any]) -> Dict[str, Any]:
         pass
 
 # method returns infos about the card name cost rarity and type

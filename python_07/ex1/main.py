@@ -36,4 +36,3 @@ for _ in my_deck.deck:
     print(f"Drew: {card.name} ({card.__class__.__name__})")
     result = card.play({"mana": 5, "battlefield": [], "artifacts": []})
     print(f"Play result: {result}\n")
-
