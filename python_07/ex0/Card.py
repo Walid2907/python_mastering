@@ -1,5 +1,5 @@
 from typing import Dict, Any
-from abc import ABC, abstractmethod
+from abc import ABC
 
 
 class Card(ABC):
@@ -17,9 +17,9 @@ class Card(ABC):
         self.cost = cost
         self.rarity = rarity.lower()
 
-    @abstractmethod
     def play(self, game_state: Dict[str, Any]) -> Dict[str, Any]:
         pass
+    play.__isabstractmethod__ = True
 
 # method returns infos about the card name cost rarity and type
     def get_card_info(self) -> Dict:
