@@ -2,6 +2,7 @@ import sys
 import importlib
 
 
+# ANSI Color codes for terminal output
 RESET_CODE = "\033[0m"
 RED_CODE = "\033[91m"
 GREEN_CODE = "\033[32m"
@@ -12,11 +13,16 @@ REQUIRED_PACKAGES = ["pandas", "requests", "matplotlib"]
 
 
 def check_dependencies():
+    """
+    Checks if required packages are installed without importing them globally.
+    Returns a tuple of (missing_packages_list, installed_packages_dict).
+    """
     missing = []
     installed = {}
 
     for package in REQUIRED_PACKAGES:
         try:
+            # Dynamically import module to check existence
             module = importlib.import_module(package)
             version = module.__version__
             print(f"{GREEN_CODE}[OK]{RESET_CODE} {package} ({version}) - {YELLOW_CODE}Ready{RESET_CODE}")
@@ -28,6 +34,7 @@ def check_dependencies():
     return missing, installed
 
 def install_instructions() -> None:
+    # Prints instructions for installing missing dependencies.
     print("\nto install missing dependencies ")
     print(BLUE_CODE + "using pip: " + RESET_CODE)
     print(GREEN_CODE + "pip install -r requirements.txt" + RESET_CODE)
@@ -35,6 +42,7 @@ def install_instructions() -> None:
     print(GREEN_CODE + "run : poetry install" + RESET_CODE)
 
 def run_analysis():
+    # Local imports to prevent crash if dependencies are missing at top level
     import pandas as pd
     import numpy as np
     import matplotlib.pyplot as plt

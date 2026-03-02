@@ -1,11 +1,15 @@
 import os
 from dotenv import load_dotenv
 
+
+# Load environment variables from .env file if present
+# This allows us to keep secrets out of source code
 load_dotenv()
 
 print("ORACLE STATUS: Reading the Matrix...\n")
 
 # get env vars
+# os.getenv return None if missing so we don't crash
 matrix_mode = os.getenv("MATRIX_MODE")
 database_url = os.getenv("DATABASE_URL")
 api_key = os.getenv("API_KEY")

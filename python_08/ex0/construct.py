@@ -4,10 +4,14 @@ import site
 
 
 python_path = sys.executable
+# sys.prefix: The prefix of the Python installation used to run the script.
+# sys.base_prefix: The prefix of the "base" Python installation
 prefix = sys.prefix
 base_prefix = sys.base_prefix
 in_venv = prefix != base_prefix
 
+# If we are in a virtual environment, 'prefix' (current env) will be different
+# from 'base_prefix' (system python). If they are the same, we are in the global scope.
 if in_venv:
     print("MATRIX STATUS: Welcome to the construct\n")
 else:
@@ -20,6 +24,7 @@ if in_venv:
     print("\nSUCCESS: You're in an isolated environment!"
           " Safe to install packages without affecting"
           " the global system.\n")
+    # Get the site-packages directory where libraries are installed
     site_packages = site.getsitepackages()[0]
     print(f"\nPackage installation path:\n{site_packages}")
 else:
