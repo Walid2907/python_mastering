@@ -47,11 +47,7 @@ def run_analysis():
     data = pd.DataFrame({"value": numbers})
 
     print(f"Processing {len(data)} data points...")
-    print(f"  Mean:   {data['value'].mean():.2f}")
-    print(f"  Median: {data['value'].median():.2f}")
-    print(f"  Std:    {data['value'].std():.2f}")
-
-    print("\nGenerating visualization...")
+    print("Generating visualization...")
 
     fig, ax = plt.subplots(figsize=(10, 6))
     x = np.arange(1, 21)
