@@ -40,11 +40,10 @@ class AlienContact(BaseModel):
                 and not self.message_received):
             raise ValueError("Strong signals (>7.0)"
                              " must include a received message")
-
         return self
 
 
-def main():
+def main() -> None:
     print("Alien Contact Log Validation")
     print("=" * 38)
 
@@ -81,9 +80,10 @@ def main():
             duration_minutes=30,
             witness_count=1,  # excepted error Witnesses
         )
-    except Exception:
+    except Exception as e:
         print("Expected validation error:")
-        print("Telepathic contact requires at least 3 witnesses")
+        for error in e.errors():
+            print(f"{error['msg'].replace('Value error, ', '')}")
 
 
 if __name__ == "__main__":

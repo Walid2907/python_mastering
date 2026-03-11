@@ -18,7 +18,7 @@ def main() -> None:
     print("Space Station Data Validation")
     print("=" * 40)
 
-    time = datetime.strptime("2024-01-15T10:30:00", "%Y-%m-%dT%H:%M:%S")
+    time = datetime.strptime("2024-01-15 10:30:00", "%Y-%m-%d %H:%M:%S")
     try:
         station = SpaceStation(
             station_id="ISS001",
@@ -55,9 +55,10 @@ def main() -> None:
             oxygen_level=50.0,
             last_maintenance=time
         )
-    except ValidationError as e:
+    except Exception as e:
         print("Expected validation error:")
-        print(e.errors()[0]["msg"])
+        for error in e.errors():
+            print(f"{error['msg'].replace('Value error, ', '')}")
 
 
 if __name__ == "__main__":
